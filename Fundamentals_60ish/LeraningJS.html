@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html data-ng-app="MyApp">
+<head>
+     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.0/angular.min.js"></script>
+        
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	Name:
+	<input type="text" data-ng-model="inputName" />{{ inputName }}
+	<div data-ng-controller="SimpleController">
+   <script type ="text/javascript">
+		var app = angular.module('MyApp', []);
+app.controller('SimpleController', function($scope) {
+			$scope.customers = [ {
+				name : 'Pavan',
+				city : 'Hyd'
+			}, {
+				name : 'Vathsalya',
+				city : 'Hyderabad'
+			}, {
+				name : 'Chaitanya',
+				city : 'H'
+			} ];
+		});
+	</script>
+		<ul>
+			<li
+				data-ng-repeat="customer in customers | filter:inputName | orderBy:'name'">
+				{{ customer.name | uppercase }} - {{ customer.city | lowercase }}</li>
+		</ul>
+       
+	</div>
+	
+	
+		
+
+</body>
+
+</html>
