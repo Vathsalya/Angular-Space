@@ -1,0 +1,13 @@
+<div class='container'>
+	<h2>View 2</h2>
+	Name: <input type="text" data-ng-model="filter.name">
+	<ul>
+		<li
+			data-ng-repeat="customer in customers | filter: filter.city | orderBy:'name'">
+			{{customer.name}} - {{customer.city}}
+	</ul>
+	Customer Name: <input type="text" data-ng-model="newCustomer.name">
+	Customer City: <input type="text" data-ng-model="newCustomer.city">
+	<button data-ng-click="addCustomer()">Submit</button>
+
+</div>

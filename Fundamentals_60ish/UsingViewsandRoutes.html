@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.0/angular.min.js"></script>
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.0/angular-route.js"></script>
+
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body data-ng-app="MyApp">
+      <div>
+		<!-- Place holder for views -->
+        <div ng-view=""></div>
+        </div>
+
+		<!-- anonymous function to create controller  -->
+        <script type="text/javascript">
+		    var app = angular.module('MyApp', ['ngRoute']);
+            app.config(function($routeProvider){
+                $routeProvider.when('/',
+                {
+                   controller:'SimpleController',
+                    templateUrl:'Views/View1.html'
+                }).when('/view2',{
+                      controller:'SimpleController',
+                    templateUrl:'Views/View2.html'
+                }).otherwise({
+                    redirectTo:('/')
+                });
+            });
+            app.controller('SimpleController', function($scope) {
+			$scope.customers = [ {
+				name : 'Pavan',
+				city : 'Hyd'
+			}, {
+				name : 'Vathsalya',
+				city : 'Hyderabad'
+			}, {
+				name : 'Chaitanya',
+				city : 'H'
+			} ];
+                
+                $scope.addCustomer = function(){
+                    $scope.customers.push({
+                    name: $scope.newCustomer.name,
+                    city: $scope.newCustomer.city
+                }); 
+                };
+		});
+	</script>
+  </body>
+
+</html>
