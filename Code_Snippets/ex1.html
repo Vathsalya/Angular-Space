@@ -1,0 +1,27 @@
+<!doctype html>
+<html data-ng-app="clock">
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.0/angular.min.js"></script>
+</head>
+<body>
+<div data-ng-controller="MyController">
+<h1>Hello {{ clock.now }}!</h1>
+</div>
+<script>
+    var demo = angular.module('clock',[]);
+    demo.controller('MyController', function($scope){
+        $scope.clock = {
+            now: new Date()
+        };
+        var updateClock = function() {
+            $scope.clock.now = new Date()
+        };
+        setInterval(function() {
+            $scope.$apply(updateClock);
+        }, 1000);
+        updateClock();
+    });
+
+</script>
+</body>
+</html>
